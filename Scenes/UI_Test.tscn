@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bexjisdhi1uah"]
+
+[ext_resource type="Script" uid="uid://d0cp3idak1vmg" path="res://Scripts/Test_Button.gd" id="1_hup40"]
+
+[node name="World" type="Node2D" unique_id=1838615569]
+
+[node name="Menu" type="Node2D" parent="." unique_id=729411636]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Menu" unique_id=1074919297]
+
+[node name="Button" type="Button" parent="Menu/CanvasLayer" unique_id=1140086352]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Test
+"
+script = ExtResource("1_hup40")
