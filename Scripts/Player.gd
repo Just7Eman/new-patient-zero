@@ -3,7 +3,6 @@ extends CharacterBody3D
 var input_direction : Vector2
 var speed : float
 
-@export var look_sensitivity: float = 0.005
 @export var walk_speed = 5.0
 @export var sprint_speed = 10.0
 @export var sneak_speed = 2.0
@@ -12,8 +11,7 @@ var speed : float
 @export var air_control = 5.0
 @export var air_resistance = 2.0
 
-@onready var head = $Head
-@onready var camera = $Head/Camera3D
+@onready var first_person_camera_3d: Camera3D = $Head/FirstPersonCamera3D
 
 func _ready():
 	#Sets mouse to center of scree and makes it invisible
@@ -23,20 +21,6 @@ func _input(event):
 	if event.is_action_pressed("end_run"):
 		get_tree().quit()
 
-func _unhandled_input(event):
-	#tracks the mouse movement and adjusts the camera and head to its position
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		head.rotate_y(-event.relative.x * look_sensitivity)
-		camera.rotate_x(-event.relative.y * look_sensitivity)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-
-	if Input.is_action_just_pressed("escape"):
-		#make mouse visible when escape is pressed
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-	if event is InputEventMouseButton and event.pressed:
-	#makes mouse invisible again when you click on screen
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
 	#apply gravity when in the air
@@ -57,7 +41,7 @@ func _physics_process(delta):
 	
 	#Get Direction Input
 	input_direction = Input.get_vector("left", "right", "up", "down")
-	var direction = (head.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
+	var direction = (first_person_camera_3d.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	
 	#Calculate movement
 	var target_velocity = direction * speed

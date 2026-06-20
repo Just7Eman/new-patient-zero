@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d1ypccnibbkr0"]
+
+[ext_resource type="Script" uid="uid://bkaer3vro2sx3" path="res://Scripts/First_Person_camera_3d.gd" id="1_ky1d1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ky1d1"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_kjr2j"]
+sky_material = SubResource("ProceduralSkyMaterial_ky1d1")
+
+[sub_resource type="Environment" id="Environment_ccqop"]
+background_mode = 2
+sky = SubResource("Sky_kjr2j")
+glow_enabled = true
+
+[node name="Camera3D" type="Camera3D" unique_id=1615524811]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_ky1d1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1408987991]
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1946474773]
+environment = SubResource("Environment_ccqop")
