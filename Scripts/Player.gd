@@ -19,6 +19,10 @@ func _ready():
 	#Sets mouse to center of scree and makes it invisible
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func _input(event):
+	if event.is_action_pressed("end_run"):
+		get_tree().quit()
+
 func _unhandled_input(event):
 	#tracks the mouse movement and adjusts the camera and head to its position
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
