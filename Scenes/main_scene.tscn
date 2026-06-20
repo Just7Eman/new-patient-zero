@@ -36,11 +36,11 @@ transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, -0.090883255, -0.03766441
 use_collision = true
 material = SubResource("StandardMaterial3D_3dogw")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Test Scene" unique_id=699914123]
+[node name="Tall Box" type="CSGBox3D" parent="Test Scene" unique_id=699914123]
 transform = Transform3D(0.9999928, 0.003373959, 0.0017405683, -0.0033647562, 0.99998057, -0.005261749, -0.0017582926, 0.005255853, 0.9999846, 7.2745214, 2.201493, 3.1662147)
 size = Vector3(1.7866821, 3.25, 1)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Test Scene" unique_id=1233938353]
+[node name="Short Box" type="CSGBox3D" parent="Test Scene" unique_id=1233938353]
 transform = Transform3D(0.9999928, 0.003373959, 0.0017405683, -0.0033647562, 0.99998057, -0.005261749, -0.0017582926, 0.005255853, 0.9999846, -3.4607925, 1.4933436, 11.137263)
 size = Vector3(1.7866821, 1.8286133, 1)
 
