@@ -1,7 +1,20 @@
 [gd_scene format=3 uid="uid://c3dxtwqjhqdyp"]
 
 [ext_resource type="Script" uid="uid://c5udjh1whufpl" path="res://Scripts/Player.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://55sxl88cx44r" path="res://Scenes/third_person_camera_3d.tscn" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://d1ypccnibbkr0" path="res://Scenes/first_person_camera_3d.tscn" id="2_cvnsp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvnsp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_6t5aa"]
+sky_material = SubResource("ProceduralSkyMaterial_cvnsp")
+
+[sub_resource type="Environment" id="Environment_vgqql"]
+background_mode = 2
+sky = SubResource("Sky_6t5aa")
+glow_enabled = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s4514"]
 
@@ -13,6 +26,13 @@ albedo_color = Color(0.40392157, 0.023529412, 0.007843138, 1)
 [node name="Player" type="CharacterBody3D" unique_id=1684661467]
 script = ExtResource("1_v0iea")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1633693522]
+environment = SubResource("Environment_vgqql")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1518828581]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1097966060]
 mesh = SubResource("CapsuleMesh_s4514")
 surface_material_override/0 = SubResource("StandardMaterial3D_r5l72")
@@ -20,7 +40,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r5l72")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=463346119]
 shape = SubResource("CapsuleShape3D_e5r06")
 
-[node name="Head" type="Node3D" parent="." unique_id=1417647162]
+[node name="ThirdPersonCamera3D" parent="." unique_id=1917199975 instance=ExtResource("2_6t5aa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="FirstPersonCamera3D" parent="Head" unique_id=1615524811 instance=ExtResource("2_cvnsp")]
+[node name="FirstPersonCamera3D" parent="." unique_id=1615524811 instance=ExtResource("2_cvnsp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

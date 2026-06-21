@@ -1,11 +1,13 @@
-extends Camera3D
+extends Node3D
 
 @export var enable := false:
 	set(value):
 			enable = value
-			current = value
+			if not Engine.is_editor_hint():
+				%Camera3D.current = value
 
 @export var look_sensitivity: float = 0.005
+@export var camlimitdeg = 70
 
 func _ready():
 	# _ready essentially makes Godot run this function automatically once the project is run.
@@ -21,7 +23,7 @@ func _unhandled_input(event):
 		# This line below is used to limit the up and down rotation for the camera
 		# The player can only look down at most 80 degrees and at highest 80 degrees
 		# deg_to_rad means its converting the Degrees to Radians
-		rotation.x = clampf(rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		rotation.x = clampf(rotation.x, deg_to_rad(-camlimitdeg), deg_to_rad(camlimitdeg))
 	
 	if Input.is_action_just_pressed("escape"):
 		#make mouse visible when escape is pressed

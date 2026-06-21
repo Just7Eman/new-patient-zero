@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://55sxl88cx44r"]
+
+[ext_resource type="Script" uid="uid://vsd1lt11lhvn" path="res://Scripts/third_person_camera_3d.gd" id="1_q7tnw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2oyge"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_qw6vc"]
+sky_material = SubResource("ProceduralSkyMaterial_2oyge")
+
+[sub_resource type="Environment" id="Environment_o4wmq"]
+background_mode = 2
+sky = SubResource("Sky_qw6vc")
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q7tnw"]
+
+[node name="ThirdPersonCamera3D" type="Node3D" unique_id=1917199975]
+script = ExtResource("1_q7tnw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=598861633]
+environment = SubResource("Environment_o4wmq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=780083567]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1452403264]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+shape = SubResource("SphereShape3D_q7tnw")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=788269799]
+unique_name_in_owner = true
