@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://d2fyici1myr4f"]
+
+[ext_resource type="Script" uid="uid://dlad80gvyiawg" path="res://Scripts/Practice Scripts/basic_progress_bar_example.gd" id="1_eeesg"]
+[ext_resource type="Script" uid="uid://ditwy1oioiydk" path="res://Scripts/Practice Scripts/progress_bar_timer_example.gd" id="2_eeesg"]
+
+[node name="ProgressBarExamples" type="Control" unique_id=81997307]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=288637193]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_right = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="BasicProgressBarExample" type="HBoxContainer" parent="VBoxContainer" unique_id=483898137]
+layout_mode = 2
+size_flags_vertical = 6
+script = ExtResource("1_eeesg")
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/BasicProgressBarExample" unique_id=731226339]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "-👈"
+
+[node name="BasicProgressBar" type="ProgressBar" parent="VBoxContainer/BasicProgressBarExample" unique_id=965018447]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+
+[node name="RightButton" type="Button" parent="VBoxContainer/BasicProgressBarExample" unique_id=978126576]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "+👉"
+
+[node name="ProgressBarTimerExample" type="HBoxContainer" parent="VBoxContainer" unique_id=1844130460]
+layout_mode = 2
+size_flags_vertical = 6
+script = ExtResource("2_eeesg")
+
+[node name="StartTimerButton" type="Button" parent="VBoxContainer/ProgressBarTimerExample" unique_id=1378836027]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "▶️"
+
+[node name="TimerProgressBar" type="ProgressBar" parent="VBoxContainer/ProgressBarTimerExample" unique_id=1448121980]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 10.0
+show_percentage = false
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer/ProgressBarTimerExample/TimerProgressBar" unique_id=1808588515]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/BasicProgressBarExample/LeftButton" to="VBoxContainer/BasicProgressBarExample" method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BasicProgressBarExample/RightButton" to="VBoxContainer/BasicProgressBarExample" method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ProgressBarTimerExample/StartTimerButton" to="VBoxContainer/ProgressBarTimerExample" method="_on_start_timer_button_pressed"]

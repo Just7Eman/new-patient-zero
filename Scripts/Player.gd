@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
-@onready var third_person_camera_3d: Node3D = $ThirdPersonCamera3D
 @onready var first_person_camera_3d: Camera3D = $FirstPersonCamera3D
+@onready var third_person_camera_3d: Node3D = $ThirdPersonCamera3D
+
 
 var input_direction : Vector2
 var speed : float
@@ -14,7 +15,18 @@ var speed : float
 @export var air_control = 5.0
 @export var air_resistance = 2.0
 
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("escape"):
+		_mouse_control()
+	
+	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func _mouse_control():
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
 	if event.is_action_pressed("end_run"):

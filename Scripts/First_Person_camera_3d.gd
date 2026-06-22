@@ -22,11 +22,3 @@ func _unhandled_input(event):
 		# The player can only look down at most 80 degrees and at highest 80 degrees
 		# deg_to_rad means its converting the Degrees to Radians
 		rotation.x = clampf(rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	
-	if Input.is_action_just_pressed("escape"):
-		#make mouse visible when escape is pressed
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-	if event is InputEventMouseButton and event.pressed:
-		#makes mouse invisible again when you click on screen
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

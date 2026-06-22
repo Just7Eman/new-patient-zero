@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="New Patient Zero"
-run/main_scene="uid://cugyfhgvt462t"
+run/main_scene="uid://enonlbrmkkt2"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://Assets/Sprites/icon.svg"
 

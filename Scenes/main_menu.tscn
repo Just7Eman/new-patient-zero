@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://enonlbrmkkt2"]
+
+[ext_resource type="Script" uid="uid://bfafd6lp8q4df" path="res://Scripts/main_menu_button.gd" id="1_28flt"]
+
+[node name="ColorRect" type="ColorRect" unique_id=1119342461]
+self_modulate = Color(0.3137255, 0.078431375, 0.05490196, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuButton" type="HBoxContainer" parent="." unique_id=674924171]
+layout_mode = 0
+offset_left = 673.0
+offset_top = 337.0
+offset_right = 1152.0
+offset_bottom = 437.0
+script = ExtResource("1_28flt")
+
+[node name="MenuButton" type="Button" parent="MainMenuButton" unique_id=928675321]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Open Baseplate"
+
+[node name="MenuButtonText" type="Label" parent="MainMenuButton" unique_id=1833599772]
+layout_mode = 2
+text = "A button changes the scene to the Baseplate"
+
+[connection signal="pressed" from="MainMenuButton/MenuButton" to="MainMenuButton" method="_on_menu_button_pressed"]

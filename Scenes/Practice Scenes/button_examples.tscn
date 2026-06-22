@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://ctcnhlbleajnd"]
+
+[ext_resource type="Script" uid="uid://bx4q8ir5kj70y" path="res://Scripts/Practice Scripts/press_example.gd" id="1_j46f7"]
+[ext_resource type="Script" uid="uid://dwfpm33q6jm5x" path="res://Scripts/Practice Scripts/toggle_example.gd" id="2_0u6gb"]
+[ext_resource type="PackedScene" uid="uid://enonlbrmkkt2" path="res://Scenes/main_menu.tscn" id="3_qfxne"]
+
+[node name="Button_Examples" type="Control" unique_id=1771045437]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=938250418]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.263
+anchor_top = 0.25500003
+anchor_right = 0.703
+anchor_bottom = 0.74700004
+offset_left = -0.4000244
+offset_top = -1.5258789e-05
+offset_right = -0.4000244
+offset_bottom = 0.39996338
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="PressExample" type="HBoxContainer" parent="VBoxContainer" unique_id=1256347653]
+layout_mode = 2
+script = ExtResource("1_j46f7")
+
+[node name="PressMe" type="Button" parent="VBoxContainer/PressExample" unique_id=1063269022]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Press Me"
+
+[node name="PressMeText" type="Label" parent="VBoxContainer/PressExample" unique_id=47434887]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Button Was Not Pressed"
+
+[node name="ToggleExample" type="HBoxContainer" parent="VBoxContainer" unique_id=1922778733]
+layout_mode = 2
+script = ExtResource("2_0u6gb")
+
+[node name="ToggleMe" type="Button" parent="VBoxContainer/ToggleExample" unique_id=43822725]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+toggle_mode = true
+text = "Toggle Me"
+
+[node name="ToggleMeText" type="Label" parent="VBoxContainer/ToggleExample" unique_id=1519461018]
+unique_name_in_owner = true
+layout_mode = 2
+text = "OFF"
+
+[node name="MenuButtonExample" parent="VBoxContainer" unique_id=674924171 instance=ExtResource("3_qfxne")]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/PressExample/PressMe" to="VBoxContainer/PressExample" method="_on_press_me_pressed"]
+[connection signal="toggled" from="VBoxContainer/ToggleExample/ToggleMe" to="VBoxContainer/PressExample" method="_on_toggle_me_toggled"]
+[connection signal="toggled" from="VBoxContainer/ToggleExample/ToggleMe" to="VBoxContainer/ToggleExample" method="_on_toggle_me_toggled"]
